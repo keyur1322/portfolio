@@ -1,26 +1,14 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 22
     commands:
-      - echo Installing dependencies...
       - npm install
-
   build:
     commands:
-      - echo Building React app...
       - npm run build
-      - echo Zipping files...
-      - zip -r build.zip * .[^.]*
-
-  post_build:
-    commands:
-      - echo Uploading build.zip to Elastic Beanstalk...
-      - aws elasticbeanstalk create-application-version --application-name react-app --version-label v1-$(date +%s) --source-bundle S3Bucket="elasticbeanstalk-[AWS-REGION]-[ACCOUNT-ID]",S3Key="build.zip"
-      - aws elasticbeanstalk update-environment --application-name react-app --environment-name [YOUR-EB-ENV-NAME] --version-label v1-$(date +%s)
-
 artifacts:
   files:
-    - build.zip
+    - '**/*'
+  base-directory: build
