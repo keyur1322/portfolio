@@ -4,21 +4,14 @@ phases:
     runtime-versions:
       nodejs: 22
     commands:
-      - echo Installing dependencies...
       - npm install
-      - npm install express path  # Install Express.js for serving React
-      - echo Done with installing dependencies...
   build:
     commands:
-      - echo Start building the project...
-      - npm run build
+      - npm run build # This will generate the build folder
       - cp server.js build/
       - cp package.json build/
       - cp Procfile build/
-      - echo Done with building the project and copy all necessory files...
 artifacts:
   files:
-    - echo Store the artifacts...
     - '**/*'
-    - echo Almost done...
-  base-directory: build
+  base-directory: build  # Ensure we deploy the build folder contents
