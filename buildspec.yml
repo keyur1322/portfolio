@@ -14,4 +14,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: build  # Ensure we deploy the build folder contents
+  base-directory: build  # Ensure we deploy the build folder contentss
