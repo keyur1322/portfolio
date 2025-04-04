@@ -8,13 +8,12 @@ phases:
       - npm install
   build:
     commands:
-      - npm run build
+      - npm run build  # Ensure the build is created
       - mkdir -p build-output
-      - cp -r build/* build-output/
+      - cp -r build build-output/  # Copy the entire build folder
       - cp server.js build-output/
       - cp package.json build-output/
-      - cp -r node_modules build-output/  # Ensure dependencies are included
-      - cp -r public build-output/  # Copy public assets if needed
+      - cp -r node_modules build-output/  # Include node_modules for runtime dependencies
 artifacts:
   base-directory: build-output
   files:
