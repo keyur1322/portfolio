@@ -6,13 +6,13 @@ phases:
       nodejs: 22
     commands:
       - npm install
-
   build:
     commands:
       - npm run build
-      - cp -r build/* ../build/
-
+      - echo "✅ Build successful"
+      - mkdir -p build-artifact
+      - cp -r build/* build-artifact/
 artifacts:
+  base-directory: build-artifact
   files:
     - '**/*'
-  base-directory: ../build
