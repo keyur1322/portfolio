@@ -1,17 +1,16 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 
 const app = express();
+const PORT = process.env.PORT || 8080;  // ✅ Use EB’s PORT
 
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
+// Serve static React files
+app.use(express.static(path.join(__dirname, "build")));
 
-// For all routes, serve the React app's index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });

@@ -13,6 +13,8 @@ phases:
       - cp -r build/* build-output/
       - cp server.js build-output/
       - cp package.json build-output/
+      - cp -r node_modules build-output/  # Ensure dependencies are included
+      - cp -r public build-output/  # Copy public assets if needed
 artifacts:
   base-directory: build-output
   files:
