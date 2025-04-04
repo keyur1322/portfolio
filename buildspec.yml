@@ -1,17 +1,18 @@
 version: 0.2
+
 phases:
   install:
     runtime-versions:
       nodejs: 22
     commands:
       - npm install
+
   build:
     commands:
-      - npm run build # This will generate the build folder
-      - cp server.js build/
-      - cp package.json build/
-      - cp Procfile build/
+      - npm run build
+      - cp -r build/* ../build/
+
 artifacts:
   files:
     - '**/*'
-  base-directory: build  # Ensure we deploy the build folder contents
+  base-directory: ../build
