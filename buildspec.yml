@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build  # Ensure the build is created
+      - mkdir -p build-output
+      - cp -r build build-output/  # Copy the entire build folder
+      - cp server.js build-output/
+      - cp package.json build-output/
+      - cp -r node_modules build-output/  # Include node_modules for runtime dependencies
+artifacts:
+  base-directory: build-output
+  files:
+    - '**/*'
